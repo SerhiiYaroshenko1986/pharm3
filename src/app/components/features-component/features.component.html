@@ -1,0 +1,24 @@
+ <section id="about" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Чому обирають ОРГАНІЯФАРМ</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Ми поєднуємо традиції фармацевтики з сучасними технологіями для вашого здоров'я
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div 
+            *ngFor="let feature of features; let i = index" 
+            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center"
+            [style.animation-delay]="i * 200 + 'ms'">
+            
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">{{feature.icon}}</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">{{feature.title}}</h3>
+            <p class="text-gray-600 leading-relaxed">{{feature.description}}</p>
+          </div>
+        </div>
+      </div>
+    </section>

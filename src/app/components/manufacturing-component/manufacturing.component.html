@@ -1,0 +1,39 @@
+<section id="manufacturing" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">Власне виробництво ліків</h2>
+            <p class="text-xl text-gray-600 mb-8">
+              Наш сучасний виробничий комплекс дозволяє створювати ліки за індивідуальними рецептами та контролювати якість на всіх етапах виробництва.
+            </p>
+            
+            <div class="space-y-6">
+              <div *ngFor="let benefit of manufacturingBenefits" class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-green-600">✓</span>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900">{{benefit.title}}</h3>
+                  <p class="text-gray-600">{{benefit.description}}</p>
+                </div>
+              </div>
+            </div>
+            
+            <button 
+              (click)="orderCustomManufacturing()"
+              class="mt-8 bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-colors">
+              Замовити виробництво
+            </button>
+          </div>
+          
+          <div class="relative">
+            <div class="w-full h-96 bg-gradient-to-br from-green-100 to-green-200 rounded-3xl flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-6xl mb-4">🏭</div>
+                <div class="text-xl font-bold text-green-700">Сертифіковане виробництво</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

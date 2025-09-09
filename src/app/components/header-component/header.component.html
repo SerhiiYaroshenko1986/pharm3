@@ -1,0 +1,79 @@
+  <header 
+      class="fixed w-full top-0 z-50 transition-all duration-300"
+      [class]="isScrolled() ? 'bg-white shadow-lg py-2' : 'bg-white/95 backdrop-blur-sm py-4'">
+      
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center space-x-3 cursor-pointer" 
+               (click)="scrollService.scrollToSection('home')">
+            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
+              <span class="text-white text-xl">🌿</span>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold text-green-700">ОРГАНІЯФАРМ</h1>
+              <p class="text-xs text-gray-500">Мережа аптек</p>
+            </div>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-8">
+            <button 
+              *ngFor="let item of navigation" 
+              (click)="scrollService.scrollToSection(item.id)"
+              class="text-gray-700 hover:text-green-600 font-medium transition-colors relative group">
+              {{item.name}}
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+            </button>
+          </nav>
+
+          <!-- Search Bar -->
+          <div class="hidden md:flex items-center space-x-4">
+            <div class="relative">
+              <input 
+                type="text" 
+                [(ngModel)]="searchQuery"
+                (keyup.enter)="handleSearch()"
+                placeholder="Пошук ліків..."
+                class="w-64 pl-4 pr-12 py-2 border-2 border-gray-200 rounded-full focus:border-green-500 focus:outline-none transition-colors">
+              <button 
+                (click)="handleSearch()"
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
+                <span class="text-sm">🔍</span>
+              </button>
+            </div>
+            <button class="p-2 text-gray-700 hover:text-green-600 transition-colors relative">
+              <span class="text-xl">🛒</span>
+              <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                {{cartCount()}}
+              </span>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="lg:hidden p-2" (click)="toggleMobileMenu()">
+            <span class="text-2xl" *ngIf="!isMobileMenuOpen()">☰</span>
+            <span class="text-2xl" *ngIf="isMobileMenuOpen()">✕</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="lg:hidden mt-4 py-4 border-t" *ngIf="isMobileMenuOpen()">
+          <div class="flex flex-col space-y-3">
+            <button 
+              *ngFor="let item of navigation"
+              (click)="scrollService.scrollToSection(item.id); toggleMobileMenu()"
+              class="text-gray-700 hover:text-green-600 font-medium text-left">
+              {{item.name}}
+            </button>
+            <div class="pt-4 border-t">
+              <input 
+                type="text" 
+                [(ngModel)]="searchQuery"
+                placeholder="Пошук ліків..."
+                class="w-full p-2 border border-gray-300 rounded-lg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
