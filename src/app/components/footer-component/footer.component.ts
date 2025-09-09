@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'app-footer-component',
+  selector: 'app-footer',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './footer.component.html',
