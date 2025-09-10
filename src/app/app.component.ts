@@ -8,6 +8,7 @@ import { CategoriesComponent } from './components/categories-component/categorie
 import { LocationsComponent } from './components/locations-component/locations.component';
 import { ManufacturingComponent } from './components/manufacturing-component/manufacturing.component';
 import { FooterComponent } from './components/footer-component/footer.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,8 @@ import { FooterComponent } from './components/footer-component/footer.component'
     CategoriesComponent,
     LocationsComponent,
     ManufacturingComponent,
-    FooterComponent
-
+    FooterComponent,
+    GoogleMapsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

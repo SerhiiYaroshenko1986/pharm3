@@ -26,7 +26,6 @@ export class HeaderComponent {
     { name: 'Про нас', id: 'about' },
     { name: 'Виробництво', id: 'manufacturing' },
     { name: 'Аптеки', id: 'locations' },
-    { name: 'Блог', id: 'blog' },
     { name: 'Контакти', id: 'contact' }
   ];
 

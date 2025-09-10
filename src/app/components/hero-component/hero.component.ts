@@ -13,8 +13,7 @@ export class HeroComponent{
  scrollService = inject(ScrollService);
 
   heroStats = [
-    { number: '50+', label: 'Аптек по Україні' },
-    { number: '15+', label: 'Років досвіду' },
+    { number: '3+', label: 'Аптек по Україні' },
     { number: '5000+', label: 'Товарів в асортименті' }
   ];
 }
