@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PharmacyService } from '../../services/pharmacy-service.service';
 import { ScrollService } from '../../services/scroll-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import { ScrollService } from '../../services/scroll-service.service';
 export class HeaderComponent {
   scrollService = inject(ScrollService);
   pharmacyService = inject(PharmacyService);
+  router = inject(Router);
   
   isScrolled = this.scrollService.isScrolled;
   cartCount = this.pharmacyService.getCartCount;
@@ -22,7 +24,7 @@ export class HeaderComponent {
 
   navigation = [
     { name: 'Головна', id: 'home' },
-    { name: 'Каталог', id: 'catalog' },
+    { name: 'Каталог', id: 'products' },
     { name: 'Про нас', id: 'about' },
     { name: 'Виробництво', id: 'manufacturing' },
     { name: 'Аптеки', id: 'locations' },
@@ -38,5 +40,9 @@ export class HeaderComponent {
     if (query.trim()) {
       this.pharmacyService.searchProducts(query);
     }
+  }
+
+  navigateToPage(id: string) {
+    this.router.navigateByUrl(id);
   }
 }

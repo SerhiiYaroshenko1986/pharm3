@@ -1,9 +1,8 @@
-<div class="min-h-screen bg-white">
+<div class="min-h-screen flex flex-col">
   <app-header></app-header>
-  <app-hero></app-hero>
-  <app-features></app-features>
-  <app-categories></app-categories>
-  <app-locations></app-locations>
-  <app-manufacturing></app-manufacturing>
+  <app-search-bar></app-search-bar>
+  <main class="flex-1">
+    <router-outlet></router-outlet>
+  </main>
   <app-footer></app-footer>
 </div>

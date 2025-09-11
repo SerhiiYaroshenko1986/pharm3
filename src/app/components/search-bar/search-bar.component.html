@@ -1,0 +1,17 @@
+<div class="w-full bg-white shadow py-4" style="margin-top: 80px;">
+  <div class="container mx-auto px-4 flex justify-center">
+    <div class="relative w-full max-w-xl">
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="handleSearch()"
+        placeholder="Пошук ліків..."
+        class="w-full pl-4 pr-20 py-4 text-lg border-2 border-gray-200 rounded-full focus:border-green-500 focus:outline-none transition-colors">
+      <button 
+        (click)="handleSearch()"
+        class="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full hover:bg-green-600 transition-colors text-base font-semibold">
+        Знайти
+      </button>
+    </div>
+  </div>
+</div>
