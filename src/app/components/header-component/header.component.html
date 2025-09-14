@@ -22,7 +22,7 @@
               *ngFor="let item of navigation" 
               (click)="navigateToPage(item.id)"
               class="text-gray-700 hover:text-green-600 font-medium transition-colors relative group">
-              {{item.name}}
+              {{item.name}} <br>
               <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
             </button>
           </nav>

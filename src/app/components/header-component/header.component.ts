@@ -24,11 +24,11 @@ export class HeaderComponent {
 
   navigation = [
     { name: 'Головна', id: 'home' },
-    { name: 'Каталог', id: 'products' },
-    { name: 'Про нас', id: 'about' },
-    { name: 'Виробництво', id: 'manufacturing' },
+    { name: 'Каталог товарів (роздрібний відпуск)', id: 'products' },
+    { name: 'Індивідуальне виготовлення (Екстемпоральні лікарські засоби)', id: 'manufacturing' },
     { name: 'Аптеки', id: 'locations' },
-    { name: 'Контакти', id: 'contact' }
+    { name: 'Про нас', id: 'about' },
+    { name: 'Контакти', id: 'contact' },
   ];
 
   toggleMobileMenu(): void {
