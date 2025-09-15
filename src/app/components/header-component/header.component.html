@@ -11,7 +11,7 @@
               <img src="assets/logo.svg">
             </div>
             <div>
-              <h1 class="text-2xl font-bold text-green-700">Organiapharm</h1>
+              <h1 class="text-2xl font-bold text-green-700">Pharmacy</h1>
               <p class="text-xs text-gray-500">Мережа аптек</p>
             </div>
           </div>
@@ -30,9 +30,9 @@
           <!-- Cart Icon -->
           <div class="hidden md:flex items-center space-x-4">
             <button class="p-2 text-gray-700 hover:text-green-600 transition-colors relative">
-              <span class="text-xl">🛒</span>
+              <span class="text-xl" (click)="navigateToPage('cart')">🛒</span>
               <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-                {{cartCount()}}
+                {{cartCount}}
               </span>
             </button>
           </div>

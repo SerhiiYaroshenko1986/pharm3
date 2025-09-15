@@ -2,6 +2,7 @@ import { Component, inject, OnInit, DestroyRef } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Product, ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -12,6 +13,7 @@ import { Product, ProductService } from '../../services/product.service';
 })
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
   private destroyRef = inject(DestroyRef);
 
   products: Product[] = [];
@@ -38,8 +40,8 @@ export class ProductsComponent implements OnInit {
     this.loading = true;
     this.productService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(list => {
-        this.products = list;
+      .subscribe(products => {
+        this.products = products;
         this.loading = false;
       });
   }
@@ -51,5 +53,11 @@ export class ProductsComponent implements OnInit {
   get filteredProducts(): Product[] {
     if (this.selectedCategory === 'All') return this.products;
     return this.products.filter(p => p.category === this.selectedCategory);
+  }
+
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
+    // Optional: Show success message
+    console.log(`${product.name} додано до кошика`);
   }
 }

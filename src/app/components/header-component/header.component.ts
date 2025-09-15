@@ -2,8 +2,9 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PharmacyService } from '../../services/pharmacy-service.service';
-import { ScrollService } from '../../services/scroll-service.service';
+import { ScrollService } from '../../services/scroll.service';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -16,16 +17,20 @@ export class HeaderComponent {
   scrollService = inject(ScrollService);
   pharmacyService = inject(PharmacyService);
   router = inject(Router);
+  cartService = inject(CartService);
   
   isScrolled = this.scrollService.isScrolled;
-  cartCount = this.pharmacyService.getCartCount;
   isMobileMenuOpen = signal(false);
   searchQuery = signal('');
 
+  get cartCount() {
+    return this.cartService.totalItems;
+  }
+
   navigation = [
     { name: 'Головна', id: 'home' },
-    { name: 'Каталог товарів (роздрібний відпуск)', id: 'products' },
-    { name: 'Індивідуальне виготовлення (Екстемпоральні лікарські засоби)', id: 'manufacturing' },
+    { name: 'Каталог товарів', id: 'products', description: '(роздрібний відпуск)' },
+    { name: 'Індивідуальне виготовлення', id: 'manufacturing', description: '(Екстемпоральні лікарські засоби)' },
     { name: 'Аптеки', id: 'locations' },
     { name: 'Про нас', id: 'about' },
     { name: 'Контакти', id: 'contact' },

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ScrollService } from '../../services/scroll-service.service';
+import { ScrollService } from '../../services/scroll.service';
 
 @Component({
   selector: 'app-hero',

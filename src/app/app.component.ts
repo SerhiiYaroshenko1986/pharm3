@@ -13,7 +13,6 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     CommonModule,
     HeaderComponent,
     SearchBarComponent,
-
     FooterComponent,
   ],
   templateUrl: './app.component.html',

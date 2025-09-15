@@ -1,16 +1,25 @@
-<div class="w-full bg-white shadow py-4" style="margin-top: 80px;">
+<div class="fixed w-full z-50 transition-all duration-300"
+     [class]="isScrolled() ? 'bg-green-600 shadow-lg py-2' : 'bg-white shadow-md py-4'"
+     [style.top]="headerHeight + 'px'">
   <div class="container mx-auto px-4 flex justify-center">
-    <div class="relative w-full max-w-xl">
+    <div class="relative w-full max-w-xl ">
       <input 
         type="text" 
         [(ngModel)]="searchQuery"
         (keyup.enter)="handleSearch()"
         placeholder="Пошук ліків..."
-        class="w-full pl-4 pr-20 py-4 text-lg border-2 border-gray-200 rounded-full focus:border-green-500 focus:outline-none transition-colors">
+        [class]="isScrolled() ? 
+          'w-full pl-4 pr-12 py-2 text-base border-2 border-white rounded-full focus:border-green-200 focus:outline-none transition-all' : 
+          'w-full pl-4 pr-12 py-4 text-lg border-2 border-gray-200 rounded-full focus:border-green-500 focus:outline-none transition-all'">
       <button 
         (click)="handleSearch()"
-        class="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full hover:bg-green-600 transition-colors text-base font-semibold">
-        Знайти
+        [class]="isScrolled() ? 
+          'absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-colors' :
+          'absolute right-2 top-1/2 transform -translate-y-1/2 p-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors'">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
     </div>
   </div>
