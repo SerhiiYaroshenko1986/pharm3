@@ -1,0 +1,38 @@
+
+.products-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.products-sidebar {
+  width: 100%;
+}
+
+.products-grid {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Large screens and up (1024px+) */
+@media (min-width: 1024px) {
+  .products-container {
+    flex-direction: row;
+  }
+  
+  .products-sidebar {
+    width: 16rem; /* w-64 equivalent */
+    flex-shrink: 0;
+  }
+}
+
+/* Extra large screens (1280px+) */
+@media (min-width: 1280px) {
+  .products-sidebar {
+    position: sticky;
+    top: 10rem;
+    height: fit-content;
+  }
+}

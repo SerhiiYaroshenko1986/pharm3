@@ -4,7 +4,7 @@
       
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between">
-          <!-- Logo -->
+          <!-- Logo - Always on the left -->
           <div class="flex items-center space-x-3 cursor-pointer" 
                (click)="scrollService.scrollToSection('home')">
             <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
@@ -16,37 +16,61 @@
             </div>
           </div>
 
-          <!-- Desktop Navigation -->
-          <nav class="hidden lg:flex items-center space-x-8">
-            <button 
-              *ngFor="let item of navigation" 
-              (click)="navigateToPage(item.id)"
-              class="text-gray-700 hover:text-green-600 font-medium transition-colors relative group">
-              {{item.name}} <br>
-              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
-            </button>
-          </nav>
+          <!-- Right side items -->
+          <div class="flex items-center space-x-4">
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8">
+              <button 
+                *ngFor="let item of navigation" 
+                (click)="navigateToPage(item.id)"
+                class="text-gray-700 hover:text-green-600 font-medium transition-colors relative group">
+                {{item.name}}
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+              </button>
+            </nav>
 
-          <!-- Cart Icon -->
-          <div class="hidden md:flex items-center space-x-4">
+            <!-- Location Selector -->
+            <button 
+              (click)="openLocationPopup()"
+              class="flex items-center space-x-2 text-gray-600 hover:text-green-600 transition-colors border border-gray-300 px-3 py-3 rounded-lg hover:bg-green-50 hover:border-green-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span class="text-sm font-medium">{{ selectedCity?.name || 'Оберіть місто' }}</span>
+            </button>
+               
+
+            <!-- Cart Icon -->
             <button class="p-2 text-gray-700 hover:text-green-600 transition-colors relative">
               <span class="text-xl" (click)="navigateToPage('cart')">🛒</span>
               <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
                 {{cartCount}}
               </span>
             </button>
-          </div>
 
-          <!-- Mobile Menu Button -->
-          <button class="lg:hidden p-2" (click)="toggleMobileMenu()">
-            <span class="text-2xl" *ngIf="!isMobileMenuOpen()">☰</span>
-            <span class="text-2xl" *ngIf="isMobileMenuOpen()">✕</span>
-          </button>
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden p-2" (click)="toggleMobileMenu()">
+              <span class="text-2xl" *ngIf="!isMobileMenuOpen()">☰</span>
+              <span class="text-2xl" *ngIf="isMobileMenuOpen()">✕</span>
+            </button>
+          </div>
         </div>
 
         <!-- Mobile Menu -->
         <div class="lg:hidden mt-4 py-4 border-t" *ngIf="isMobileMenuOpen()">
           <div class="flex flex-col space-y-3">
+            <!-- Mobile Location Selector -->
+            <button 
+              (click)="openLocationPopup(); toggleMobileMenu()"
+              class="md:hidden flex items-center space-x-2 text-gray-700 hover:text-green-600 font-medium text-left p-2 rounded-lg hover:bg-green-50">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>{{ selectedCity?.name || 'Оберіть місто' }}</span>
+            </button>
+            
             <button 
               *ngFor="let item of navigation"
               (click)="navigateToPage(item.id); toggleMobileMenu()"

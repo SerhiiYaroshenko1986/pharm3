@@ -5,6 +5,7 @@ import { PharmacyService } from '../../services/pharmacy-service.service';
 import { ScrollService } from '../../services/scroll.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,7 @@ export class HeaderComponent {
   pharmacyService = inject(PharmacyService);
   router = inject(Router);
   cartService = inject(CartService);
+  locationService = inject(LocationService);
   
   isScrolled = this.scrollService.isScrolled;
   isMobileMenuOpen = signal(false);
@@ -25,6 +27,10 @@ export class HeaderComponent {
 
   get cartCount() {
     return this.cartService.totalItems;
+  }
+
+  get selectedCity() {
+    return this.locationService.selectedCity();
   }
 
   navigation = [
@@ -49,5 +55,9 @@ export class HeaderComponent {
 
   navigateToPage(id: string) {
     this.router.navigateByUrl(id);
+  }
+
+  openLocationPopup(): void {
+    this.locationService.openLocationDialog();
   }
 }

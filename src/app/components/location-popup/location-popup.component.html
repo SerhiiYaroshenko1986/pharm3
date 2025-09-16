@@ -1,0 +1,35 @@
+<div class="location-dialog">
+  <!-- Header -->
+  <div mat-dialog-title class="dialog-header">
+    <h2>Оберіть ваше місто</h2>
+    <button mat-icon-button (click)="onNoClick()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Content -->
+  <div mat-dialog-content class="dialog-content">
+    <div class="cities-list">
+      <button
+        *ngFor="let city of data.cities"
+        (click)="selectCity(city)"
+        [class]="(data.selectedCity?.id === city.id ? 'city-option selected' : 'city-option')">
+        <div class="city-info">
+          <div class="city-name">{{ city.name }}</div>
+          <div class="city-region">{{ city.region }}</div>
+        </div>
+        <mat-icon *ngIf="data.selectedCity?.id === city.id" class="selected-icon">
+          check_circle
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div mat-dialog-actions class="dialog-actions">
+    <p class="dialog-footer-text">
+      <mat-icon class="info-icon">home</mat-icon>
+      Ваш вибір буде збережено для наступних відвідувань
+    </p>
+  </div>
+</div>
