@@ -2,3 +2,217 @@
     padding-top: 90px;
     width: 100%;
 }
+
+.app-tile {
+  @apply flex flex-col items-center justify-center p-6 bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 min-h-[140px];
+}
+
+.app-tile-icon {
+  @apply w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg;
+}
+
+/* Large card styles with enhanced visuals */
+.app-tile-large {
+  @apply flex flex-col items-center justify-center p-8 bg-white rounded-3xl transition-all duration-300 transform hover:-translate-y-3 min-h-[200px] relative overflow-hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.app-tile-large:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+}
+
+.app-tile-large:active {
+  @apply transform scale-95;
+}
+
+/* Enhanced icon styling */
+.app-tile-icon-large {
+  @apply w-24 h-24 rounded-3xl flex items-center justify-center mb-6 transition-all duration-300 relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.app-tile-large:hover .app-tile-icon-large {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced gradient backgrounds with more vibrant colors */
+.catalog-icon {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #2563eb);
+  position: relative;
+}
+
+.catalog-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  border-radius: inherit;
+}
+
+.production-icon {
+  background: linear-gradient(135deg, #059669, #10b981, #34d399);
+  position: relative;
+}
+
+.production-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  border-radius: inherit;
+}
+
+.pharmacy-icon {
+  background: linear-gradient(135deg, #dc2626, #ef4444, #f87171);
+  position: relative;
+}
+
+.pharmacy-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  border-radius: inherit;
+}
+
+.about-icon {
+  background: linear-gradient(135deg, #4338ca, #6366f1, #8b5cf6);
+  position: relative;
+}
+
+.about-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  border-radius: inherit;
+}
+
+.contacts-icon {
+  background: linear-gradient(135deg, #be185d, #ec4899, #f472b6);
+  position: relative;
+}
+
+.contacts-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  border-radius: inherit;
+}
+
+/* Enhanced label styling */
+.app-tile-label-large {
+  @apply text-lg font-bold text-gray-800 text-center leading-tight transition-all duration-300;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.app-tile-large:hover .app-tile-label-large {
+  @apply text-gray-900;
+  transform: translateY(-2px);
+}
+
+/* Add subtle background pattern to cards */
+.app-tile-large::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 70% 20%, rgba(59, 130, 246, 0.05), transparent 50%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Pulse animation for icons */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(79, 70, 229, 0.3);
+  }
+}
+
+.app-tile-large:hover .catalog-icon {
+  animation: pulse-glow 2s infinite;
+}
+
+.app-tile-large:hover .production-icon {
+  animation: pulse-glow 2s infinite;
+}
+
+.app-tile-large:hover .pharmacy-icon {
+  animation: pulse-glow 2s infinite;
+}
+
+.app-tile-large:hover .about-icon {
+  animation: pulse-glow 2s infinite;
+}
+
+.app-tile-large:hover .contacts-icon {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .app-tile {
+    @apply min-h-[120px] p-4;
+  }
+  
+  .app-tile-icon {
+    @apply w-12 h-12 mb-3;
+  }
+  
+  .app-tile-icon svg {
+    @apply w-6 h-6;
+  }
+  
+  .app-tile-label {
+    @apply text-xs;
+  }
+  
+  .app-tile-large {
+    @apply min-h-[180px] p-6;
+  }
+  
+  .app-tile-icon-large {
+    @apply w-20 h-20 mb-4;
+  }
+  
+  .app-tile-icon-large svg {
+    @apply w-8 h-8;
+  }
+  
+  .app-tile-label-large {
+    @apply text-base;
+  }
+}
+
+/* Legacy hover animations */
+.app-tile:hover {
+  @apply bg-gradient-to-br from-white to-gray-50;
+}
+
+.app-tile:active {
+  @apply transform scale-95;
+}

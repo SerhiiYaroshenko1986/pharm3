@@ -6,11 +6,11 @@
         <div class="flex items-center justify-between">
           <!-- Logo - Always on the left -->
           <div class="flex items-center space-x-3 cursor-pointer" 
-               (click)="scrollService.scrollToSection('home')">
+               (click)="navigateTo('home')">
             <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
               <img src="assets/logo.svg">
             </div>
-            <div>
+            <div (click)="navigateTo('home')">
               <h1 class="text-2xl font-bold text-green-700">Pharmacy</h1>
               <p class="text-xs text-gray-500">Мережа аптек</p>
             </div>

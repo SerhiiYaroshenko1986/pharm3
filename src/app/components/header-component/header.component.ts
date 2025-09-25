@@ -60,4 +60,8 @@ export class HeaderComponent {
   openLocationPopup(): void {
     this.locationService.openLocationDialog();
   }
+
+  navigateTo(page: string) {
+    this.router.navigate([`/${page}`]);
+  }
 }

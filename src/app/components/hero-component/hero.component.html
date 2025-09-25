@@ -1,54 +1,78 @@
- <section id="home" class="bg-gradient-to-br from-green-50 via-white to-green-50 overflow-hidden" style="padding-top:90px">
-  <div class="mx-auto px-4 py-20">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-8">
-        <div class="space-y-4">
-          <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            Ваше здоров'я - 
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-700"> наш пріоритет</span>
-          </h1>
-          <p class="text-xl text-gray-600 leading-relaxed">
-            Мережа аптек з власним виробництвом. Якісні ліки, натуральні препарати та професійні консультації для турботи про ваше здоров'я
-          </p>
-        </div>
-        
-        <div class="flex flex-col sm:flex-row gap-4">
-          <button 
-            (click)="scrollService.scrollToSection('catalog')"
-            class="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full font-semibold hover:from-green-600 hover:to-green-700 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl">
-            Переглянути каталог
-          </button>
-          <button 
-            (click)="scrollService.scrollToSection('locations')"
-            class="border-2 border-green-500 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-all duration-300">
-            Знайти аптеку
-          </button>
+<section id="home" class="bg-gradient-to-br from-green-50 via-white to-green-50 overflow-hidden" style="padding-top:90px">
+  <div class="container mx-auto px-4 py-20">
+    <!-- Hero Header -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        Ваше здоров'я - 
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-700">наш пріоритет</span>
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+        Мережа аптек з власним виробництвом. Якісні ліки, натуральні препарати та професійні консультації
+      </p>
+    </div>
+
+    <!-- App-style Grid Menu -->
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <!-- Каталог ліків -->
+        <div 
+          (click)="navigateToPage('products')"
+          class="app-tile-large group cursor-pointer">
+          <div class="app-tile-icon-large catalog-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6l-4-4zM16 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L17.5 8H13z"/>
+            </svg>
+          </div>
+          <span class="app-tile-label-large">Каталог ліків</span>
         </div>
 
-        <!-- Stats -->
-        <div class="grid grid-cols-3 gap-6 pt-8">
-          <div class="text-center" *ngFor="let stat of heroStats">
-            <div class="text-3xl font-bold text-green-600">{{stat.number}}</div>
-            <div class="text-gray-600 text-sm">{{stat.label}}</div>
+        <!-- Виробництво -->
+        <div 
+          (click)="navigateToPage('prescriptions')"
+          class="app-tile-large group cursor-pointer">
+          <div class="app-tile-icon-large production-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9.5 2C8.67 2 8 2.67 8 3.5V4H6c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1h-2v-.5C16 2.67 15.33 2 14.5 2h-5zM6 9v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9H6zm2 2h8v6H8v-6z"/>
+            </svg>
           </div>
+          <span class="app-tile-label-large">Індивідуальне виготовлення</span>
         </div>
-      </div>
 
-      <!-- Hero Image -->
-      <div class="relative">
-        <div class="w-full h-96 bg-gradient-to-br from-green-100 to-green-200 rounded-3xl flex items-center justify-center">
-          <div class="text-center">
-            <div class="text-6xl mb-4">🏥</div>
-            <div class="text-2xl font-bold text-green-700 mb-2">Власне виробництво</div>
-            <div class="text-green-600">Контроль якості на всіх етапах</div>
+        <!-- Аптеки -->
+        <div 
+          (click)="navigateToPage('locations')"
+          class="app-tile-large group cursor-pointer">
+          <div class="app-tile-icon-large pharmacy-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              <path d="M10 8h4v2h-4V8z"/>
+            </svg>
           </div>
+          <span class="app-tile-label-large">Аптеки</span>
         </div>
-        <!-- Floating elements -->
-        <div class="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center">
-          <span class="text-2xl">💊</span>
+
+        <!-- Про нас -->
+        <div 
+          (click)="navigateToPage('about')"
+          class="app-tile-large group cursor-pointer">
+          <div class="app-tile-icon-large about-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <span class="app-tile-label-large">Про нас</span>
         </div>
-        <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-          <span class="text-2xl">🌿</span>
+
+        <!-- Контакти -->
+        <div 
+          (click)="navigateToPage('contacts')"
+          class="app-tile-large group cursor-pointer">
+          <div class="app-tile-icon-large contacts-icon">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <span class="app-tile-label-large">Контакти</span>
         </div>
       </div>
     </div>
