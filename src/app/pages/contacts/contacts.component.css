@@ -1,0 +1,20 @@
+/* Contacts Component Styles */
+
+/* Custom scrollbar for pharmacy list */
+.lg\:overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lg\:overflow-y-auto::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 3px;
+}
+
+.lg\:overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #1EB985;
+  border-radius: 3px;
+}
+
+.lg\:overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #18a374;
+}

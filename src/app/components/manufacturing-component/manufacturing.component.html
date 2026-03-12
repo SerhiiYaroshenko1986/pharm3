@@ -1,39 +1,119 @@
-<section id="manufacturing" class="py-20">
-      <div class="container mx-auto px-4">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 class="text-4xl font-bold text-gray-900 mb-6">Власне виробництво ліків</h2>
-            <p class="text-xl text-gray-600 mb-8">
-              Наш сучасний виробничий комплекс дозволяє створювати ліки за індивідуальними рецептами та контролювати якість на всіх етапах виробництва.
-            </p>
-            
-            <div class="space-y-6">
-              <div *ngFor="let benefit of manufacturingBenefits" class="flex items-start space-x-4">
-                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span class="text-green-600">✓</span>
-                </div>
-                <div>
-                  <h3 class="font-bold text-gray-900">{{benefit.title}}</h3>
-                  <p class="text-gray-600">{{benefit.description}}</p>
-                </div>
-              </div>
+<div class="min-h-screen bg-neutral-50" style="padding-top: 104px;">
+  <!-- Page Header -->
+  <div class="bg-gradient-to-br from-primary to-primary-700 text-white">
+    <div class="container-custom py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+          Індивідуальне виготовлення
+        </h1>
+        <p class="text-lg text-white/90 max-w-3xl mx-auto">
+          Лікарські засоби індивідуального виготовлення за унікальними рецептами. 
+          Контроль якості на всіх етапах виробництва.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex flex-col items-center justify-center py-20">
+    <div class="w-12 h-12 border-4 border-primary-200 border-t-primary rounded-full animate-spin mb-4"></div>
+    <span class="text-neutral-600">Завантаження...</span>
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="!loading" class="container-custom py-8">
+    <!-- Categories -->
+    <div class="mb-8">
+      <div class="flex flex-wrap gap-3">
+        <button
+          *ngFor="let category of categories"
+          (click)="selectCategory(category)"
+          [class]="(selectedCategory?.id === category.id ? 'btn-primary' : 'btn-secondary') + 
+                   ' whitespace-nowrap py-2.5 px-5'">
+          {{ category.name }}
+          <span class="ml-2 text-sm opacity-75">({{ category.products.length }})</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Description -->
+    <div *ngIf="selectedCategory" class="mb-8">
+      <div class="card p-6 md:p-8 border-l-4 border-primary">
+        <h2 class="text-2xl font-display font-bold text-neutral-900 mb-2">{{ selectedCategory.name }}</h2>
+        <p class="text-neutral-600">{{ selectedCategory.description }}</p>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div *ngIf="selectedCategory" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        *ngFor="let product of selectedCategory.products"
+        class="card overflow-hidden hover:shadow-soft-lg transition-all flex flex-col">
+        
+        <!-- Product Image -->
+        <div class="relative h-64 bg-neutral-100 overflow-hidden">
+          <img 
+            [src]="product.imageUrl" 
+            [alt]="product.name"
+            class="w-full h-full object-contain"
+            (error)="onImageError($event)"
+          />
+        </div>
+
+        <!-- Product Content -->
+        <div class="p-6 flex flex-col flex-grow">
+          <!-- Product Header -->
+          <div class="mb-4">
+            <h3 class="text-xl font-semibold text-neutral-900 mb-3">{{ product.name }}</h3>
+            <div class="space-y-1 text-sm text-neutral-600">
+              <p><strong class="text-neutral-900">Форма:</strong> {{ product.dosageForm }}</p>
+              <p><strong class="text-neutral-900">Виробник:</strong> {{ product.manufacturer }}</p>
             </div>
-            
-            <button 
-              (click)="orderCustomManufacturing()"
-              class="mt-8 bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-colors">
-              Замовити виробництво
-            </button>
           </div>
-          
-          <div class="relative">
-            <div class="w-full h-96 bg-gradient-to-br from-green-100 to-green-200 rounded-3xl flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-6xl mb-4">🏭</div>
-                <div class="text-xl font-bold text-green-700">Сертифіковане виробництво</div>
-              </div>
-            </div>
+
+          <!-- Short Description -->
+          <div class="mb-4 flex-grow">
+            <p class="text-sm text-neutral-700 line-clamp-2">
+              <strong class="text-neutral-900">Показання:</strong> {{ product.indications }}
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex gap-3 mt-auto">
+            <button
+              (click)="navigateToProduct(product.id)"
+              class="flex-1 btn btn-secondary py-2.5 text-sm">
+              Детальніше
+            </button>
+            
+            <a
+              *ngIf="product.externalLink"
+              [href]="product.externalLink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 btn btn-primary py-2.5 text-sm text-center">
+              Забронювати
+            </a>
+
+            <button
+              *ngIf="!product.externalLink"
+              class="flex-1 btn btn-secondary py-2.5 text-sm opacity-50 cursor-not-allowed"
+              disabled>
+              Недоступно
+            </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="selectedCategory && selectedCategory.products.length === 0" 
+         class="card text-center py-20">
+      <svg class="w-20 h-20 text-neutral-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+      </svg>
+      <h3 class="text-lg font-semibold text-neutral-900 mb-2">Продукти відсутні</h3>
+      <p class="text-neutral-600">В цій категорії поки що немає доступних продуктів</p>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Product {
-  id: number;
+  id: number | string;
   name: string;
   description: string;
   price: number;

@@ -1,0 +1,222 @@
+<div class="min-h-screen bg-neutral-50" style="padding-top: 104px;">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex flex-col items-center justify-center py-20">
+    <div class="w-12 h-12 border-4 border-primary-200 border-t-primary rounded-full animate-spin mb-4"></div>
+    <span class="text-neutral-600">Завантаження...</span>
+  </div>
+
+  <!-- Product Content -->
+  <div *ngIf="!loading && product">
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b border-neutral-200">
+      <div class="container-custom py-4">
+        <nav class="flex items-center gap-2 text-sm">
+          <a routerLink="/" class="text-neutral-600 hover:text-primary">Головна</a>
+          <svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <a routerLink="/manufacturing" class="text-neutral-600 hover:text-primary">Індивідуальне виготовлення</a>
+          <svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <span class="text-neutral-900">{{ product.name }}</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="container-custom py-12">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Product Image -->
+        <div>
+          <div class="aspect-square bg-white rounded-card overflow-hidden shadow-soft">
+            <img 
+              [src]="product.imageUrl" 
+              [alt]="product.name"
+              class="w-full h-full object-contain"
+              (error)="onImageError($event)">
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div>
+          <!-- Title & Badge -->
+          <div class="mb-6">
+            <h1 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">{{ product.name }}</h1>
+            
+            <!-- Specs -->
+            <div class="space-y-2 text-neutral-700">
+              <div class="flex items-start gap-2">
+                <span class="font-semibold min-w-[140px]">Форма випуску:</span>
+                <span>{{ product.dosageForm }}</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="font-semibold min-w-[140px]">Виробник:</span>
+                <span>{{ product.manufacturer }}</span>
+              </div>
+              <div *ngIf="product.packaging" class="flex items-start gap-2">
+                <span class="font-semibold min-w-[140px]">Упаковка:</span>
+                <span>{{ product.packaging }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Actions -->
+          <div class="card p-6 mb-6">
+            <div class="flex items-baseline gap-3 mb-6">
+              <span *ngIf="product.price > 0" class="text-4xl font-bold text-neutral-900">{{ product.price }} ₴</span>
+              <span *ngIf="product.price === 0" class="text-2xl font-semibold text-neutral-600">Ціна за запитом</span>
+            </div>
+
+            <!-- Booking Button -->
+            <div class="space-y-4">
+              <a
+                *ngIf="product.externalLink"
+                [href]="product.externalLink"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full btn btn-primary py-4 text-base flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+                Забронювати
+              </a>
+              
+              <button 
+                *ngIf="!product.externalLink"
+                class="w-full btn btn-secondary py-4 text-base opacity-50 cursor-not-allowed"
+                disabled>
+                Недоступно
+              </button>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <div class="grid grid-cols-3 gap-4 text-center text-sm">
+            <div class="p-4 bg-white rounded-button shadow-soft">
+              <svg class="w-6 h-6 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+              <div class="font-medium text-neutral-900">Контроль якості</div>
+              <div class="text-xs text-neutral-600">Гарантія</div>
+            </div>
+            <div class="p-4 bg-white rounded-button shadow-soft">
+              <svg class="w-6 h-6 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <div class="font-medium text-neutral-900">Швидко</div>
+              <div class="text-xs text-neutral-600">Готово за 1-2 дні</div>
+            </div>
+            <div class="p-4 bg-white rounded-button shadow-soft">
+              <svg class="w-6 h-6 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <div class="font-medium text-neutral-900">Професіонали</div>
+              <div class="text-xs text-neutral-600">Досвідчені фармацевти</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs Section -->
+      <div class="mt-16">
+        <!-- Tab Navigation -->
+        <div class="border-b border-neutral-200 mb-8">
+          <div class="flex gap-8 overflow-x-auto">
+            <button 
+              (click)="selectTab('indications')"
+              [class.text-primary]="selectedTab === 'indications'"
+              [class.border-primary]="selectedTab === 'indications'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Показання
+            </button>
+            <button 
+              *ngIf="product.composition"
+              (click)="selectTab('composition')"
+              [class.text-primary]="selectedTab === 'composition'"
+              [class.border-primary]="selectedTab === 'composition'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Склад
+            </button>
+            <button 
+              *ngIf="product.pharmacologicalProperties"
+              (click)="selectTab('properties')"
+              [class.text-primary]="selectedTab === 'properties'"
+              [class.border-primary]="selectedTab === 'properties'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Властивості
+            </button>
+            <button 
+              *ngIf="product.dosageAndAdministration"
+              (click)="selectTab('dosage')"
+              [class.text-primary]="selectedTab === 'dosage'"
+              [class.border-primary]="selectedTab === 'dosage'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Спосіб застосування
+            </button>
+            <button 
+              *ngIf="product.contraindications"
+              (click)="selectTab('contraindications')"
+              [class.text-primary]="selectedTab === 'contraindications'"
+              [class.border-primary]="selectedTab === 'contraindications'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Протипоказання
+            </button>
+            <button 
+              *ngIf="product.sideEffects"
+              (click)="selectTab('side-effects')"
+              [class.text-primary]="selectedTab === 'side-effects'"
+              [class.border-primary]="selectedTab === 'side-effects'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Побічні ефекти
+            </button>
+            <button 
+              *ngIf="product.specialInstructions"
+              (click)="selectTab('special')"
+              [class.text-primary]="selectedTab === 'special'"
+              [class.border-primary]="selectedTab === 'special'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Особливості
+            </button>
+            <button 
+              *ngIf="product.storageConditions"
+              (click)="selectTab('storage')"
+              [class.text-primary]="selectedTab === 'storage'"
+              [class.border-primary]="selectedTab === 'storage'"
+              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              Зберігання
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="max-w-3xl">
+          <div *ngIf="selectedTab === 'indications'" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.indications }}</p>
+          </div>
+          <div *ngIf="selectedTab === 'composition' && product.composition" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.composition }}</p>
+          </div>
+          <div *ngIf="selectedTab === 'properties' && product.pharmacologicalProperties" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.pharmacologicalProperties }}</p>
+          </div>
+          <div *ngIf="selectedTab === 'dosage' && product.dosageAndAdministration" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.dosageAndAdministration }}</p>
+          </div>
+          <div *ngIf="selectedTab === 'contraindications' && product.contraindications" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.contraindications }}</p>
+          </div>
+          <div *ngIf="selectedTab === 'side-effects' && product.sideEffects" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.sideEffects }}</p>
+          </div>
+          <div *ngIf="selectedTab === 'special' && product.specialInstructions" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.specialInstructions }}</p>
+          </div>
+          <div *ngIf="selectedTab === 'storage' && product.storageConditions" class="card p-6">
+            <p class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ product.storageConditions }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

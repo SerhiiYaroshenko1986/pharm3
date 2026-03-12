@@ -1,0 +1,182 @@
+<div class="min-h-screen bg-neutral-50" style="padding-top: 104px;">
+  <div class="container-custom py-12">
+    <!-- Header -->
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">Upload prescription</h1>
+      <p class="text-lg text-neutral-600">Upload your prescription for quick and easy refills. Our licensed pharmacists will verify and process your order.</p>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <div class="flex items-center justify-between">
+        <div class="flex flex-col items-center gap-2 flex-1">
+          <div 
+            [class.bg-primary]="currentStep >= 1"
+            [class.bg-neutral-300]="currentStep < 1"
+            class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold">
+            1
+          </div>
+          <span [class.text-neutral-900]="currentStep >= 1" [class.text-neutral-500]="currentStep < 1" class="text-sm font-medium">Upload</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-neutral-300"></div>
+        <div class="flex flex-col items-center gap-2 flex-1">
+          <div 
+            [class.bg-primary]="currentStep >= 2"
+            [class.bg-neutral-300]="currentStep < 2"
+            class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold">
+            2
+          </div>
+          <span [class.text-neutral-900]="currentStep >= 2" [class.text-neutral-500]="currentStep < 2" class="text-sm font-medium">Verify</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-neutral-300"></div>
+        <div class="flex flex-col items-center gap-2 flex-1">
+          <div 
+            [class.bg-primary]="currentStep >= 3"
+            [class.bg-neutral-300]="currentStep < 3"
+            class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold">
+            3
+          </div>
+          <span [class.text-neutral-900]="currentStep >= 3" [class.text-neutral-500]="currentStep < 3" class="text-sm font-medium">Delivery</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-neutral-300"></div>
+        <div class="flex flex-col items-center gap-2 flex-1">
+          <div 
+            [class.bg-primary]="currentStep >= 4"
+            [class.bg-neutral-300]="currentStep < 4"
+            class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold">
+            4
+          </div>
+          <span [class.text-neutral-900]="currentStep >= 4" [class.text-neutral-500]="currentStep < 4" class="text-sm font-medium">Confirm</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      <!-- Step 1: Upload -->
+      <div *ngIf="currentStep === 1" class="card p-8">
+        <h2 class="text-xl font-semibold text-neutral-900 mb-6">Upload your prescription</h2>
+        
+        <!-- Upload Area -->
+        <div class="border-2 border-dashed border-neutral-300 rounded-card p-12 text-center mb-6 hover:border-primary transition-colors cursor-pointer">
+          <input 
+            type="file" 
+            (change)="onFileSelected($event)"
+            accept="image/*,.pdf"
+            class="hidden" 
+            #fileInput>
+          
+          <svg class="w-16 h-16 text-neutral-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+          </svg>
+          
+          <p class="text-lg font-semibold text-neutral-900 mb-2">
+            <button (click)="fileInput.click()" class="text-primary hover:text-primary-700">Click to upload</button> or drag and drop
+          </p>
+          <p class="text-sm text-neutral-500">PNG, JPG, PDF up to 10MB</p>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="bg-primary-50 border-l-4 border-primary rounded-button p-4">
+          <div class="flex gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            <div>
+              <p class="font-semibold text-primary-900 mb-1">Your privacy is protected</p>
+              <p class="text-sm text-primary-800">Your prescription is securely stored and only accessible by licensed pharmacists. We comply with all HIPAA regulations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Verify Details -->
+      <div *ngIf="currentStep === 2" class="card p-8">
+        <h2 class="text-xl font-semibold text-neutral-900 mb-6">Verify prescription details</h2>
+        
+        <!-- Uploaded File Preview -->
+        <div *ngIf="uploadedFile" class="bg-neutral-100 rounded-card p-4 mb-6 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <div>
+              <p class="font-semibold text-neutral-900">{{ uploadedFile.name }}</p>
+              <p class="text-sm text-neutral-500">{{ (uploadedFile.size / 1024 / 1024).toFixed(2) }} MB</p>
+            </div>
+          </div>
+          <button (click)="removeFile()" class="text-red-500 hover:text-red-700">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="space-y-4 mb-6">
+          <div>
+            <label for="patientName" class="block text-sm font-medium text-neutral-900 mb-2">Patient name</label>
+            <input id="patientName" type="text" [(ngModel)]="prescriptionData.patientName" placeholder="Full name" class="input">
+          </div>
+          <div>
+            <label for="prescriptionNumber" class="block text-sm font-medium text-neutral-900 mb-2">Prescription number (optional)</label>
+            <input id="prescriptionNumber" type="text" [(ngModel)]="prescriptionData.prescriptionNumber" placeholder="RX-12345" class="input">
+          </div>
+          <div>
+            <label for="notes" class="block text-sm font-medium text-neutral-900 mb-2">Additional notes (optional)</label>
+            <textarea id="notes" [(ngModel)]="prescriptionData.notes" rows="3" placeholder="Any special instructions or questions..." class="input"></textarea>
+          </div>
+        </div>
+
+        <div class="flex justify-between gap-3">
+          <button (click)="currentStep = 1" class="btn btn-secondary px-8">
+            Back
+          </button>
+          <button (click)="submitPrescription()" class="btn btn-primary px-8">
+            Submit prescription
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div *ngIf="currentStep === 3" class="card p-8 text-center">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        
+        <h2 class="text-2xl font-display font-bold text-neutral-900 mb-3">Prescription submitted successfully!</h2>
+        <p class="text-neutral-600 mb-8">
+          Our pharmacist will review your prescription within 24 hours. We'll notify you by email once it's ready for delivery.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <button class="btn btn-primary px-8">
+            Track status
+          </button>
+          <button (click)="currentStep = 1; uploadedFile = null" class="btn btn-outline-primary px-8">
+            Upload another
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="max-w-2xl mx-auto mt-16">
+      <h3 class="text-xl font-semibold text-neutral-900 mb-6">Frequently asked questions</h3>
+      <div class="space-y-4">
+        <div class="card p-6">
+          <h4 class="font-semibold text-neutral-900 mb-2">What file formats are accepted?</h4>
+          <p class="text-sm text-neutral-600">We accept PNG, JPG, and PDF files up to 10MB in size.</p>
+        </div>
+        <div class="card p-6">
+          <h4 class="font-semibold text-neutral-900 mb-2">How long does verification take?</h4>
+          <p class="text-sm text-neutral-600">Our pharmacists typically review prescriptions within 24 hours. You'll receive an email notification once approved.</p>
+        </div>
+        <div class="card p-6">
+          <h4 class="font-semibold text-neutral-900 mb-2">Is my information secure?</h4>
+          <p class="text-sm text-neutral-600">Yes, we use bank-level encryption and comply with all HIPAA regulations to protect your privacy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,16 +5,16 @@
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between">
           <!-- Logo - Always on the left -->
-          <div class="flex items-center space-x-3 cursor-pointer" 
+          <button class="flex items-center space-x-3" 
                (click)="navigateTo('home')">
             <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
-              <img src="assets/logo.svg">
+              <img src="assets/logo.svg" alt="Pharmacy Logo">
             </div>
-            <div (click)="navigateTo('home')">
+            <div>
               <h1 class="text-2xl font-bold text-green-700">Pharmacy</h1>
               <p class="text-xs text-gray-500">Мережа аптек</p>
             </div>
-          </div>
+          </button>
 
           <!-- Right side items -->
           <div class="flex items-center space-x-4">
@@ -28,26 +28,6 @@
                 <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
               </button>
             </nav>
-
-            <!-- Location Selector -->
-            <button 
-              (click)="openLocationPopup()"
-              class="flex items-center space-x-2 text-gray-600 hover:text-green-600 transition-colors border border-gray-300 px-3 py-3 rounded-lg hover:bg-green-50 hover:border-green-400">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span class="text-sm font-medium">{{ selectedCity?.name || 'Оберіть місто' }}</span>
-            </button>
-               
-
-            <!-- Cart Icon -->
-            <button class="p-2 text-gray-700 hover:text-green-600 transition-colors relative">
-              <span class="text-xl" (click)="navigateToPage('cart')">🛒</span>
-              <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-                {{cartCount}}
-              </span>
-            </button>
 
             <!-- Mobile Menu Button -->
             <button class="lg:hidden p-2" (click)="toggleMobileMenu()">

@@ -1,0 +1,124 @@
+<div class="min-h-screen bg-neutral-50" style="padding-top: 104px;">
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-primary to-primary-700 text-white">
+    <div class="container-custom py-20">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">
+          Виробнича аптека «Органіяфарм»
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-50 font-light">
+          Якість, створена професіоналами
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container-custom py-16">
+    <!-- Introduction -->
+    <div class="max-w-4xl mx-auto mb-20">
+      <div class="card p-8 md:p-12">
+        <p class="text-lg text-neutral-700 leading-relaxed mb-6">
+          «Органіяфарм» — сучасна виробнича аптека, що здійснює роздрібний відпуск лікарських засобів, 
+          у тому числі препаратів предметно-кількісного обліку, а також індивідуальне виготовлення 
+          лікарських препаратів за рецептами лікарів.
+        </p>
+        <p class="text-lg text-neutral-700 leading-relaxed mb-6">
+          Основним напрямом діяльності є виготовлення лікарських засобів в умовах аптеки з дотриманням 
+          вимог чинного законодавства та стандартів належної фармацевтичної практики. У роботі ми 
+          використовуємо передовий досвід провідних країн світу та впроваджуємо сучасні практичні 
+          досягнення у сфері аптечного виробництва.
+        </p>
+        <p class="text-lg text-neutral-700 leading-relaxed mb-6">
+          Ми поєднуємо професійний досвід і відповідальність, забезпечуючи пацієнтів безпечними та 
+          ефективними препаратами.
+        </p>
+        <p class="text-lg text-neutral-900 font-medium leading-relaxed">
+          Діяльність аптеки має соціальне значення та спрямована на підвищення доступності лікарських 
+          засобів для населення.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mission -->
+    <div class="mb-20">
+      <div class="max-w-4xl mx-auto">
+        <div class="card p-8 md:p-12 border-l-4 border-primary">
+          <h2 class="text-2xl md:text-3xl font-display font-bold text-neutral-900 mb-6">
+            Наша місія
+          </h2>
+          <p class="text-lg text-neutral-700 leading-relaxed">
+            Забезпечувати пацієнтів якісними, безпечними та доступними лікарськими засобами промислового 
+            виробництва та власного виготовлення, сприяючи покращенню здоров'я та якості життя.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="mb-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 text-center mb-12">
+          Наші переваги
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div *ngFor="let feature of features" class="card p-6 text-center hover:shadow-soft-lg transition-shadow">
+            <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">{{ feature.icon }}</span>
+            </div>
+            <h3 class="font-semibold text-neutral-900 mb-3">{{ feature.title }}</h3>
+            <p class="text-sm text-neutral-600 leading-relaxed">{{ feature.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="mb-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 text-center mb-12">
+          Наші цінності
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let value of values" class="card p-6 hover:shadow-soft-lg transition-shadow">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              <div>
+                <h3 class="font-semibold text-neutral-900 mb-2">{{ value.title }}</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">{{ value.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Principles -->
+    <div class="mb-20">
+      <div class="max-w-4xl mx-auto">
+        <div class="card p-8 md:p-12 bg-primary-50">
+          <h2 class="text-2xl md:text-3xl font-display font-bold text-neutral-900 mb-8 text-center">
+            Принципи роботи
+          </h2>
+          <div class="space-y-4">
+            <div *ngFor="let principle of principles; let i = index" class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold">
+                {{ i + 1 }}
+              </div>
+              <p class="text-neutral-700 leading-relaxed pt-1">{{ principle }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing Statement -->
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="card p-8 md:p-12 bg-gradient-to-br from-primary to-primary-700 text-white">
+        <p class="text-xl md:text-2xl font-display font-semibold">
+          «Органіяфарм» — виробнича аптека, що поєднує професійний підхід, якість і відповідальність за результат.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

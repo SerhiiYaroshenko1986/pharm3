@@ -1,0 +1,226 @@
+<div class="min-h-screen bg-neutral-50" style="padding-top: 104px;">
+  <div class="container-custom py-12">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">Checkout</h1>
+      
+      <!-- Progress Indicator -->
+      <div class="max-w-2xl mx-auto">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <div 
+              [class.bg-primary]="currentStep >= 1"
+              [class.bg-neutral-300]="currentStep < 1"
+              class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold">
+              1
+            </div>
+            <span [class.text-neutral-900]="currentStep >= 1" [class.text-neutral-500]="currentStep < 1" class="text-sm font-medium">Shipping</span>
+          </div>
+          <div class="flex-1 h-0.5 bg-neutral-300 mx-4"></div>
+          <div class="flex items-center gap-2">
+            <div 
+              [class.bg-primary]="currentStep >= 2"
+              [class.bg-neutral-300]="currentStep < 2"
+              class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold">
+              2
+            </div>
+            <span [class.text-neutral-900]="currentStep >= 2" [class.text-neutral-500]="currentStep < 2" class="text-sm font-medium">Payment</span>
+          </div>
+          <div class="flex-1 h-0.5 bg-neutral-300 mx-4"></div>
+          <div class="flex items-center gap-2">
+            <div 
+              [class.bg-primary]="currentStep >= 3"
+              [class.bg-neutral-300]="currentStep < 3"
+              class="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold">
+              3
+            </div>
+            <span [class.text-neutral-900]="currentStep >= 3" [class.text-neutral-500]="currentStep < 3" class="text-sm font-medium">Confirm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Form Section -->
+      <div class="lg:col-span-2">
+        <!-- Step 1: Shipping Information -->
+        <div *ngIf="currentStep === 1" class="card p-8">
+          <h2 class="text-xl font-semibold text-neutral-900 mb-6">Shipping information</h2>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-neutral-900 mb-2">First name</label>
+              <input id="firstName" type="text" [(ngModel)]="checkoutData.shipping.firstName" class="input">
+            </div>
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-neutral-900 mb-2">Last name</label>
+              <input id="lastName" type="text" [(ngModel)]="checkoutData.shipping.lastName" class="input">
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label for="email" class="block text-sm font-medium text-neutral-900 mb-2">Email</label>
+              <input id="email" type="email" [(ngModel)]="checkoutData.shipping.email" class="input">
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-neutral-900 mb-2">Phone</label>
+              <input id="phone" type="tel" [(ngModel)]="checkoutData.shipping.phone" class="input">
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label for="address" class="block text-sm font-medium text-neutral-900 mb-2">Address</label>
+            <input id="address" type="text" [(ngModel)]="checkoutData.shipping.address" class="input">
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div>
+              <label for="city" class="block text-sm font-medium text-neutral-900 mb-2">City</label>
+              <input id="city" type="text" [(ngModel)]="checkoutData.shipping.city" class="input">
+            </div>
+            <div>
+              <label for="postalCode" class="block text-sm font-medium text-neutral-900 mb-2">Postal code</label>
+              <input id="postalCode" type="text" [(ngModel)]="checkoutData.shipping.postalCode" class="input">
+            </div>
+            <div>
+              <label for="country" class="block text-sm font-medium text-neutral-900 mb-2">Country</label>
+              <input id="country" type="text" [(ngModel)]="checkoutData.shipping.country" class="input">
+            </div>
+          </div>
+
+          <div class="flex justify-end gap-3">
+            <button (click)="nextStep()" class="btn btn-primary px-8">
+              Continue to payment
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Payment -->
+        <div *ngIf="currentStep === 2" class="card p-8">
+          <h2 class="text-xl font-semibold text-neutral-900 mb-6">Payment method</h2>
+          
+          <div class="grid gap-4 mb-6">
+            <label class="card p-4 cursor-pointer hover:border-primary transition-all border-2" [class.border-primary]="checkoutData.payment.method === 'card'">
+              <div class="flex items-center gap-4">
+                <input type="radio" name="payment" value="card" [(ngModel)]="checkoutData.payment.method" class="w-5 h-5 text-primary">
+                <div class="flex-1">
+                  <p class="font-semibold text-neutral-900">Credit / Debit card</p>
+                  <p class="text-sm text-neutral-600">Pay securely with your card</p>
+                </div>
+                <div class="flex gap-2">
+                  <svg class="h-8 w-12 text-neutral-400" viewBox="0 0 48 32" fill="currentColor"><rect width="48" height="32" rx="4" fill="#1434CB"/></svg>
+                  <svg class="h-8 w-12 text-neutral-400" viewBox="0 0 48 32" fill="currentColor"><rect width="48" height="32" rx="4" fill="#EB001B"/></svg>
+                </div>
+              </div>
+            </label>
+
+            <label class="card p-4 cursor-pointer hover:border-primary transition-all border-2" [class.border-primary]="checkoutData.payment.method === 'paypal'">
+              <div class="flex items-center gap-4">
+                <input type="radio" name="payment" value="paypal" [(ngModel)]="checkoutData.payment.method" class="w-5 h-5 text-primary">
+                <div class="flex-1">
+                  <p class="font-semibold text-neutral-900">PayPal</p>
+                  <p class="text-sm text-neutral-600">Pay with your PayPal account</p>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div *ngIf="checkoutData.payment.method === 'card'" class="space-y-4 mb-6">
+            <div>
+              <label for="cardNumber" class="block text-sm font-medium text-neutral-900 mb-2">Card number</label>
+              <input id="cardNumber" type="text" [(ngModel)]="checkoutData.payment.cardNumber" placeholder="1234 5678 9012 3456" class="input">
+            </div>
+            <div>
+              <label for="cardName" class="block text-sm font-medium text-neutral-900 mb-2">Cardholder name</label>
+              <input id="cardName" type="text" [(ngModel)]="checkoutData.payment.cardName" class="input">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="expiryDate" class="block text-sm font-medium text-neutral-900 mb-2">Expiry date</label>
+                <input id="expiryDate" type="text" [(ngModel)]="checkoutData.payment.expiryDate" placeholder="MM/YY" class="input">
+              </div>
+              <div>
+                <label for="cvv" class="block text-sm font-medium text-neutral-900 mb-2">CVV</label>
+                <input id="cvv" type="text" [(ngModel)]="checkoutData.payment.cvv" placeholder="123" class="input">
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between gap-3">
+            <button (click)="previousStep()" class="btn btn-secondary px-8">
+              Back
+            </button>
+            <button (click)="nextStep()" class="btn btn-primary px-8">
+              Review order
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Confirm -->
+        <div *ngIf="currentStep === 3" class="card p-8">
+          <h2 class="text-xl font-semibold text-neutral-900 mb-6">Confirm your order</h2>
+          
+          <div class="space-y-6 mb-8">
+            <div>
+              <h3 class="font-semibold text-neutral-900 mb-2">Shipping address</h3>
+              <p class="text-neutral-600">
+                {{ checkoutData.shipping.firstName }} {{ checkoutData.shipping.lastName }}<br>
+                {{ checkoutData.shipping.address }}<br>
+                {{ checkoutData.shipping.city }}, {{ checkoutData.shipping.postalCode }}<br>
+                {{ checkoutData.shipping.country }}
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-neutral-900 mb-2">Payment method</h3>
+              <p class="text-neutral-600 capitalize">{{ checkoutData.payment.method }}</p>
+            </div>
+          </div>
+
+          <div class="flex justify-between gap-3">
+            <button (click)="previousStep()" class="btn btn-secondary px-8">
+              Back
+            </button>
+            <button (click)="completePurchase()" class="btn btn-primary px-8">
+              Complete purchase
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="lg:col-span-1">
+        <div class="card p-6 sticky top-28">
+          <h2 class="text-lg font-semibold text-neutral-900 mb-6">Order summary</h2>
+          
+          <div class="space-y-4 mb-6">
+            <div class="flex gap-4">
+              <div class="w-16 h-16 bg-neutral-100 rounded-button"></div>
+              <div class="flex-1">
+                <p class="font-medium text-sm text-neutral-900">Sample Product</p>
+                <p class="text-xs text-neutral-500">Qty: 1</p>
+                <p class="text-sm font-semibold text-neutral-900 mt-1">$15.99</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-neutral-200 pt-4 space-y-3">
+            <div class="flex justify-between text-sm">
+              <span class="text-neutral-600">Subtotal</span>
+              <span class="font-medium text-neutral-900">$15.99</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-neutral-600">Shipping</span>
+              <span class="font-medium text-primary">Free</span>
+            </div>
+            <div class="flex justify-between text-lg font-bold">
+              <span class="text-neutral-900">Total</span>
+              <span class="text-primary">$15.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

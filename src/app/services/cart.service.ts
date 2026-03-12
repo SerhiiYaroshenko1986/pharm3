@@ -33,12 +33,12 @@ export class CartService {
     }
   }
   
-  removeFromCart(productId: number): void {
+  removeFromCart(productId: number | string): void {
     const currentItems = this._cartItems();
     this._cartItems.set(currentItems.filter(item => item.product.id !== productId));
   }
   
-  updateQuantity(productId: number, quantity: number): void {
+  updateQuantity(productId: number | string, quantity: number): void {
     if (quantity <= 0) {
       this.removeFromCart(productId);
       return;

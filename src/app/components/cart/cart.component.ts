@@ -27,12 +27,12 @@ export class CartComponent {
     return this.cartService.totalItems;
   }
 
-  updateQuantity(productId: number, quantity: number): void {
+  updateQuantity(productId: number | string, quantity: number): void {
     this.cartService.updateQuantity(productId, quantity);
     // Force change detection
   }
 
-  removeItem(productId: number): void {
+  removeItem(productId: number | string): void {
     this.cartService.removeFromCart(productId);
   }
 

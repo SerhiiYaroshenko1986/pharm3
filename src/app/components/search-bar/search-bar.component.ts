@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ScrollService } from '../../services/scroll.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,23 +11,15 @@ import { ScrollService } from '../../services/scroll.service';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
-  private scrollService = inject(ScrollService);
-  
   searchQuery = '';
-  isMobileMenuOpen = false; // You'll need to get this state from a service or parent component
-  
-  get headerHeight(): number {
-    return this.scrollService.isScrolled() ? 60 : 80;
-  }
+  headerHeight = 104; // Fixed header height
 
-  get isScrolled() {
-    return this.scrollService.isScrolled;
-  }
+  constructor(private router: Router) {}
 
   handleSearch(): void {
     if (this.searchQuery.trim()) {
-      console.log('Searching for:', this.searchQuery);
-      // Implement search logic
+      // Navigate to products page with search query
+      this.router.navigate(['/products'], { queryParams: { q: this.searchQuery } });
     }
   }
 }

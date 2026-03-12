@@ -37,9 +37,8 @@ export class HeaderComponent {
     { name: 'Головна', id: 'home' },
     { name: 'Каталог товарів', id: 'products', description: '(роздрібний відпуск)' },
     { name: 'Індивідуальне виготовлення', id: 'manufacturing', description: '(Екстемпоральні лікарські засоби)' },
-    { name: 'Аптеки', id: 'locations' },
     { name: 'Про нас', id: 'about' },
-    { name: 'Контакти', id: 'contact' },
+    { name: 'Контакти', id: 'contacts' },
   ];
 
   toggleMobileMenu(): void {
