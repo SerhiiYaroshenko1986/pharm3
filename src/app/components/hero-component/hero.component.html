@@ -4,26 +4,26 @@
     <div class="max-w-4xl mx-auto text-center">
       <!-- Main Headline -->
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-neutral-900 leading-tight mb-6">
-        Your trusted pharmacy,
-        <span class="text-primary">delivered.</span>
+        Ваше здоров'я — наш 
+        <span class="text-primary">пріоритет</span>
       </h1>
       
       <!-- Subtext -->
       <p class="text-lg md:text-xl text-neutral-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-        Licensed pharmacists • Fast delivery • Easy refills
+        Власне виробництво • Індивідуальне виготовлення • Натуральні препарати
       </p>
       
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
         <button 
-          (click)="navigateToPage('products')"
+          (click)="navigateToPage('manufacturing')"
           class="btn btn-primary text-base px-8 py-4 w-full sm:w-auto">
-          Shop now
+          Індивідуальне виготовлення
         </button>
         <button 
-          (click)="navigateToPage('prescriptions')"
+          (click)="navigateToPage('about')"
           class="btn btn-outline-primary text-base px-8 py-4 w-full sm:w-auto">
-          Upload prescription
+          Про нас
         </button>
       </div>
       
@@ -31,21 +31,21 @@
       <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-600 mb-16">
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
           </svg>
-          <span class="font-medium">Licensed pharmacy</span>
+          <span class="font-medium">Власне виробництво</span>
         </div>
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
           </svg>
-          <span class="font-medium">Secure checkout</span>
+          <span class="font-medium">Контроль якості</span>
         </div>
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
           </svg>
-          <span class="font-medium">Pharmacist support</span>
+          <span class="font-medium">Кваліфіковані фармацевти</span>
         </div>
       </div>
     </div>
@@ -53,34 +53,35 @@
     <!-- Quick Action Tiles -->
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- Refill Prescription -->
+        <!-- Individual Manufacturing -->
         <button 
-          (click)="navigateToPage('prescriptions')"
+          (click)="navigateToPage('manufacturing')"
           class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
           <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
             </svg>
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Refill RX</h3>
-          <p class="text-xs text-neutral-500">Quick & easy</p>
+          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Індивідуальне виготовлення</h3>
+          <p class="text-xs text-neutral-500">За рецептом</p>
         </button>
 
-        <!-- Track Order -->
+        <!-- Catalog -->
         <button 
+          (click)="navigateToPage('manufacturing')"
           class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
           <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
             </svg>
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Track order</h3>
-          <p class="text-xs text-neutral-500">Real-time updates</p>
+          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Каталог</h3>
+          <p class="text-xs text-neutral-500">Весь асортимент</p>
         </button>
 
-        <!-- Find a Store -->
+        <!-- Locations -->
         <button 
-          (click)="navigateToPage('locations')"
+          (click)="navigateToPage('contacts')"
           class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
           <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,20 +89,21 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Find a store</h3>
-          <p class="text-xs text-neutral-500">Near you</p>
+          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Наші відділення</h3>
+          <p class="text-xs text-neutral-500">3 аптеки</p>
         </button>
 
-        <!-- Consultation -->
+        <!-- About -->
         <button 
+          (click)="navigateToPage('about')"
           class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
           <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Consultation</h3>
-          <p class="text-xs text-neutral-500">Ask pharmacist</p>
+          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Про нас</h3>
+          <p class="text-xs text-neutral-500">Наша історія</p>
         </button>
       </div>
     </div>
