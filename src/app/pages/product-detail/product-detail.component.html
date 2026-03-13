@@ -122,68 +122,84 @@
       <div class="mt-16">
         <!-- Tab Navigation -->
         <div class="border-b border-neutral-200 mb-8">
-          <div class="flex gap-8 overflow-x-auto">
+          <div class="flex gap-2 overflow-x-auto pb-1">
             <button 
               (click)="selectTab('indications')"
-              [class.text-primary]="selectedTab === 'indications'"
+              [class.bg-primary]="selectedTab === 'indications'"
+              [class.text-white]="selectedTab === 'indications'"
               [class.border-primary]="selectedTab === 'indications'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'indications'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Показання
             </button>
             <button 
               *ngIf="product.composition"
               (click)="selectTab('composition')"
-              [class.text-primary]="selectedTab === 'composition'"
+              [class.bg-primary]="selectedTab === 'composition'"
+              [class.text-white]="selectedTab === 'composition'"
               [class.border-primary]="selectedTab === 'composition'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'composition'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Склад
             </button>
             <button 
               *ngIf="product.pharmacologicalProperties"
               (click)="selectTab('properties')"
-              [class.text-primary]="selectedTab === 'properties'"
+              [class.bg-primary]="selectedTab === 'properties'"
+              [class.text-white]="selectedTab === 'properties'"
               [class.border-primary]="selectedTab === 'properties'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'properties'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Властивості
             </button>
             <button 
               *ngIf="product.dosageAndAdministration"
               (click)="selectTab('dosage')"
-              [class.text-primary]="selectedTab === 'dosage'"
+              [class.bg-primary]="selectedTab === 'dosage'"
+              [class.text-white]="selectedTab === 'dosage'"
               [class.border-primary]="selectedTab === 'dosage'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'dosage'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Спосіб застосування
             </button>
             <button 
               *ngIf="product.contraindications"
               (click)="selectTab('contraindications')"
-              [class.text-primary]="selectedTab === 'contraindications'"
+              [class.bg-primary]="selectedTab === 'contraindications'"
+              [class.text-white]="selectedTab === 'contraindications'"
               [class.border-primary]="selectedTab === 'contraindications'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'contraindications'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Протипоказання
             </button>
             <button 
               *ngIf="product.sideEffects"
               (click)="selectTab('side-effects')"
-              [class.text-primary]="selectedTab === 'side-effects'"
+              [class.bg-primary]="selectedTab === 'side-effects'"
+              [class.text-white]="selectedTab === 'side-effects'"
               [class.border-primary]="selectedTab === 'side-effects'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'side-effects'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Побічні ефекти
             </button>
             <button 
               *ngIf="product.specialInstructions"
               (click)="selectTab('special')"
-              [class.text-primary]="selectedTab === 'special'"
+              [class.bg-primary]="selectedTab === 'special'"
+              [class.text-white]="selectedTab === 'special'"
               [class.border-primary]="selectedTab === 'special'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'special'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Особливості
             </button>
             <button 
               *ngIf="product.storageConditions"
               (click)="selectTab('storage')"
-              [class.text-primary]="selectedTab === 'storage'"
+              [class.bg-primary]="selectedTab === 'storage'"
+              [class.text-white]="selectedTab === 'storage'"
               [class.border-primary]="selectedTab === 'storage'"
-              class="pb-4 border-b-2 border-transparent text-neutral-600 hover:text-neutral-900 font-medium whitespace-nowrap transition-colors">
+              [class.font-semibold]="selectedTab === 'storage'"
+              class="px-4 py-2.5 rounded-t-lg border-b-2 border-transparent text-neutral-600 hover:bg-primary-50 hover:text-primary font-medium whitespace-nowrap transition-all">
               Зберігання
             </button>
           </div>
