@@ -1,30 +1,30 @@
-<div class="min-h-screen bg-neutral-50" style="padding-top: 104px;">
+<div class="min-h-screen bg-neutral-50" style="padding-top: 68px;">
   <div class="container-custom py-12">
     <!-- Header -->
     <div class="flex items-center justify-between mb-8">
-      <h1 class="text-3xl md:text-4xl font-display font-bold text-neutral-900">Shopping cart</h1>
-      <button 
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-neutral-900">Кошик</h1>
+      <button
         (click)="goBack()"
-        class="flex items-center gap-2 text-primary hover:text-primary-700 font-medium transition-colors">
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        class="flex items-center gap-2 text-primary hover:text-primary-700 font-medium text-sm transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
-        Continue shopping
+        Продовжити покупки
       </button>
     </div>
 
     <!-- Empty Cart -->
     <div *ngIf="cartItems.length === 0" class="flex flex-col items-center justify-center py-20">
       <div class="card p-12 max-w-md text-center">
-        <svg class="w-20 h-20 text-neutral-300 mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <svg class="w-16 h-16 text-neutral-300 mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
         </svg>
-        <h2 class="text-2xl font-display font-bold text-neutral-900 mb-3">Your cart is empty</h2>
-        <p class="text-neutral-600 mb-8">Add products to your cart to get started</p>
-        <button 
+        <h2 class="text-xl font-display font-bold text-neutral-900 mb-2">Ваш кошик порожній</h2>
+        <p class="text-sm text-neutral-500 mb-8">Додайте товари до кошика, щоб продовжити</p>
+        <button
           (click)="goBack()"
-          class="btn btn-primary px-8 py-3">
-          Start shopping
+          class="btn btn-primary px-8">
+          Перейти до каталогу
         </button>
       </div>
     </div>
@@ -36,9 +36,9 @@
         <div *ngFor="let item of cartItems" class="card p-6">
           <div class="flex gap-6">
             <!-- Product Image -->
-            <div class="w-24 h-24 flex-shrink-0 bg-neutral-100 rounded-button overflow-hidden">
+            <div class="w-24 h-24 flex-shrink-0 bg-neutral-100 rounded overflow-hidden">
               <div class="w-full h-full flex items-center justify-center">
-                <svg class="w-12 h-12 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-10 h-10 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                 </svg>
               </div>
@@ -51,9 +51,9 @@
                   <h3 class="font-semibold text-neutral-900 mb-1">{{ item.product.name }}</h3>
                   <p class="text-sm text-neutral-500">{{ item.product.description }}</p>
                 </div>
-                <button 
+                <button
                   (click)="removeItem(item.product.id)"
-                  class="text-neutral-400 hover:text-red-500 transition-colors">
+                  class="text-neutral-400 hover:text-red-500 transition-colors ml-4">
                   <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
@@ -63,18 +63,18 @@
               <div class="flex items-center justify-between">
                 <!-- Quantity Controls -->
                 <div class="flex items-center gap-3">
-                  <button 
+                  <button
                     (click)="updateQuantity(item.product.id, item.quantity - 1)"
-                    class="w-9 h-9 border-2 border-neutral-300 rounded-button flex items-center justify-center hover:border-primary hover:text-primary transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="w-8 h-8 border border-neutral-300 rounded flex items-center justify-center hover:border-primary hover:text-primary transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
                     </svg>
                   </button>
-                  <span class="font-medium text-neutral-900 min-w-[2rem] text-center">{{ item.quantity }}</span>
-                  <button 
+                  <span class="font-medium text-neutral-900 min-w-[2rem] text-center text-sm">{{ item.quantity }}</span>
+                  <button
                     (click)="updateQuantity(item.product.id, item.quantity + 1)"
-                    class="w-9 h-9 bg-primary text-white rounded-button flex items-center justify-center hover:bg-primary-600 transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="w-8 h-8 bg-primary rounded flex items-center justify-center hover:bg-primary-600 transition-colors">
+                    <svg class="w-3.5 h-3.5 text-neutral-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
                   </button>
@@ -82,7 +82,7 @@
 
                 <!-- Price -->
                 <div class="text-right">
-                  <p class="text-sm text-neutral-500 mb-1">{{ item.quantity }} × {{ item.product.price }} ₴</p>
+                  <p class="text-xs text-neutral-500 mb-0.5">{{ item.quantity }} × {{ item.product.price }} ₴</p>
                   <p class="text-lg font-bold text-neutral-900">{{ item.product.price * item.quantity }} ₴</p>
                 </div>
               </div>
@@ -91,67 +91,56 @@
         </div>
       </div>
 
-
       <!-- Order Summary -->
       <div class="lg:col-span-1">
-        <div class="card p-6 sticky top-28">
-          <h2 class="text-lg font-semibold text-neutral-900 mb-6">Order summary</h2>
-          
-          <div class="space-y-3 mb-6">
-            <div class="flex justify-between text-sm">
-              <span class="text-neutral-600">Items ({{ totalItems }})</span>
+        <div class="card p-6 sticky top-20">
+          <h2 class="text-base font-semibold text-neutral-900 mb-5">Підсумок замовлення</h2>
+
+          <div class="space-y-3 mb-6 text-sm">
+            <div class="flex justify-between">
+              <span class="text-neutral-500">Товарів ({{ totalItems }})</span>
               <span class="font-medium text-neutral-900">{{ totalPrice }} ₴</span>
             </div>
-            <div class="flex justify-between text-sm">
-              <span class="text-neutral-600">Shipping</span>
-              <span class="font-medium text-primary">Free</span>
+            <div class="flex justify-between">
+              <span class="text-neutral-500">Доставка</span>
+              <span class="font-medium text-primary">Безкоштовно</span>
             </div>
-            <div class="flex justify-between text-sm">
-              <span class="text-neutral-600">Tax</span>
-              <span class="font-medium text-neutral-900">0 ₴</span>
-            </div>
-            
-            <div class="h-px bg-neutral-200 my-4"></div>
-            
-            <div class="flex justify-between text-lg font-bold">
-              <span class="text-neutral-900">Total</span>
-              <span class="text-primary">{{ totalPrice }} ₴</span>
+
+            <div class="h-px bg-neutral-200 my-3"></div>
+
+            <div class="flex justify-between text-base font-bold">
+              <span class="text-neutral-900">Разом</span>
+              <span class="text-neutral-900">{{ totalPrice }} ₴</span>
             </div>
           </div>
-          
+
           <div class="space-y-3">
-            <button 
+            <button
               (click)="checkout()"
-              class="btn btn-primary w-full py-3.5">
-              Proceed to checkout
+              class="btn btn-primary w-full">
+              Оформити замовлення
             </button>
-            
-            <button 
+
+            <button
               (click)="clearCart()"
-              class="btn btn-secondary w-full py-2.5 text-sm">
-              Clear cart
+              class="btn btn-secondary w-full text-sm">
+              Очистити кошик
             </button>
           </div>
 
           <!-- Trust Badges -->
-          <div class="mt-6 pt-6 border-t border-neutral-200 space-y-3">
-            <div class="flex items-center gap-3 text-sm text-neutral-600">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="mt-6 pt-5 border-t border-neutral-100 space-y-3">
+            <div class="flex items-center gap-3 text-sm text-neutral-500">
+              <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
               </svg>
-              <span>Secure checkout</span>
+              <span>Безпечна оплата</span>
             </div>
-            <div class="flex items-center gap-3 text-sm text-neutral-600">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
-              </svg>
-              <span>Free returns within 30 days</span>
-            </div>
-            <div class="flex items-center gap-3 text-sm text-neutral-600">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="flex items-center gap-3 text-sm text-neutral-500">
+              <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
               </svg>
-              <span>Fast delivery (2-3 days)</span>
+              <span>Швидка доставка 2-3 дні</span>
             </div>
           </div>
         </div>

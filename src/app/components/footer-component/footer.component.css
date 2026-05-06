@@ -1,0 +1,17 @@
+.footer-link {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+}
+.footer-link:hover,
+.footer-link:focus {
+  color: #33E1AA;
+}
+
+.footer-meta-link {
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s;
+}
+.footer-meta-link:hover,
+.footer-meta-link:focus {
+  color: #33E1AA;
+}

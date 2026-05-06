@@ -1,60 +1,54 @@
-<header 
-      class="fixed w-full top-0 z-50 transition-all duration-300"
-      [class]="isScrolled() ? 'bg-white shadow-lg py-2' : 'bg-white/95 backdrop-blur-sm py-4'">
-      
+<header
+      class="fixed w-full top-0 z-50 bg-white transition-all duration-300"
+      [class]="isScrolled() ? 'shadow-soft-md' : 'border-b border-neutral-200'">
+
       <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between">
-          <!-- Logo - Always on the left -->
-          <button class="flex items-center space-x-3" 
+        <div class="flex items-center justify-between" style="height: 68px;">
+          <!-- Logo -->
+          <button class="flex items-center gap-2.5"
                (click)="navigateTo('home')">
-            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
-              <img src="assets/logo.svg" alt="Pharmacy Logo">
-            </div>
-            <div>
-              <h1 class="text-2xl font-bold text-green-700">Pharmacy</h1>
-              <p class="text-xs text-gray-500">Мережа аптек</p>
-            </div>
+            <!-- Leaf icon like cura -->
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 3C14 3 5 8 5 16C5 20.418 9.134 24 14 24C18.866 24 23 20.418 23 16C23 8 14 3 14 3Z" fill="#33E1AA"/>
+              <path d="M14 24V12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M14 17L10 13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M14 14L18 10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="text-lg font-bold text-neutral-900" style="font-family: Manrope, sans-serif; letter-spacing: -0.5px;">ОРГАНІЯФАРМ</span>
           </button>
 
           <!-- Right side items -->
-          <div class="flex items-center space-x-4">
+          <div class="flex items-center gap-8">
             <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center space-x-8">
-              <button 
-                *ngFor="let item of navigation" 
+            <nav class="hidden lg:flex items-center gap-7">
+              <button
+                *ngFor="let item of navigation"
                 (click)="navigateToPage(item.id)"
-                class="text-gray-700 hover:text-green-600 font-medium transition-colors relative group">
+                class="text-neutral-600 hover:text-primary font-medium text-sm transition-colors relative group">
                 {{item.name}}
-                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 group-hover:w-full transition-all duration-300"></span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
               </button>
             </nav>
 
             <!-- Mobile Menu Button -->
-            <button class="lg:hidden p-2" (click)="toggleMobileMenu()">
-              <span class="text-2xl" *ngIf="!isMobileMenuOpen()">☰</span>
-              <span class="text-2xl" *ngIf="isMobileMenuOpen()">✕</span>
+            <button class="lg:hidden p-2 text-neutral-700" (click)="toggleMobileMenu()">
+              <svg *ngIf="!isMobileMenuOpen()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+              <svg *ngIf="isMobileMenuOpen()" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
             </button>
           </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div class="lg:hidden mt-4 py-4 border-t" *ngIf="isMobileMenuOpen()">
-          <div class="flex flex-col space-y-3">
-            <!-- Mobile Location Selector -->
-            <!-- <button 
-              (click)="openLocationPopup(); toggleMobileMenu()"
-              class="md:hidden flex items-center space-x-2 text-gray-700 hover:text-green-600 font-medium text-left p-2 rounded-lg hover:bg-green-50">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>{{ selectedCity?.name || 'Оберіть місто' }}</span>
-            </button> -->
-            
-            <button 
+        <div class="lg:hidden py-4 border-t border-neutral-100" *ngIf="isMobileMenuOpen()">
+          <div class="flex flex-col gap-3">
+            <button
               *ngFor="let item of navigation"
               (click)="navigateToPage(item.id); toggleMobileMenu()"
-              class="text-gray-700 hover:text-green-600 font-medium text-left">
+              class="text-neutral-600 hover:text-primary font-medium text-sm text-left py-1">
               {{item.name}}
             </button>
           </div>

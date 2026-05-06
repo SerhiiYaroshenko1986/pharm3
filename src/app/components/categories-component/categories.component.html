@@ -1,30 +1,34 @@
     <section id="catalog" class="py-20 bg-neutral-50">
       <div class="container-custom">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-3">Shop by category</h2>
-          <p class="text-lg text-neutral-600">Find what you need, fast</p>
+          <h2 class="section-title section-title-center text-3xl mb-5">Категорії товарів</h2>
+          <p class="text-sm text-neutral-500 mt-2">Знайдіть необхідне швидко</p>
         </div>
-        
+
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          <button 
-            *ngFor="let category of categories" 
+          <button
+            *ngFor="let category of categories"
             (click)="selectCategory(category)"
-            class="card group p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
-            
-            <div class="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary-100 transition-colors">
-              <span class="text-2xl">{{category.icon}}</span>
+            class="card group p-6 text-center hover:scale-[1.03] transition-all duration-200 cursor-pointer flex flex-col items-center">
+
+            <div class="w-20 h-20 flex items-center justify-center mx-auto mb-4">
+              <img
+                [src]="category.icon"
+                [alt]="category.name"
+                class="w-full h-full object-contain drop-shadow-sm group-hover:scale-110 transition-transform duration-200"
+              />
             </div>
-            
-            <h3 class="font-semibold text-neutral-900 text-sm mb-1 group-hover:text-primary transition-colors">{{category.name}}</h3>
-            <p class="text-xs text-neutral-500">{{category.count}} items</p>
+
+            <h3 class="font-semibold text-neutral-900 text-sm mb-1 group-hover:text-primary transition-colors leading-tight">{{category.name}}</h3>
+            <p class="text-xs text-neutral-500">{{category.count}} товарів</p>
           </button>
         </div>
 
         <div class="text-center mt-10">
-          <button 
+          <button
             (click)="selectCategory(null)"
             class="btn btn-outline-primary">
-            View all categories
+            Переглянути всі категорії
           </button>
         </div>
       </div>

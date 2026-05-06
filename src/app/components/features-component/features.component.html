@@ -1,24 +1,26 @@
- <section id="about" class="py-20 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">Чому обирають ОРГАНІЯФАРМ</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ми поєднуємо традиції фармацевтики з сучасними технологіями для вашого здоров'я
-          </p>
+<section id="about" class="py-20 bg-neutral-50">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="section-title section-title-center text-3xl mb-5">Чому обирають ОРГАНІЯФАРМ</h2>
+      <p class="text-sm text-neutral-500 max-w-3xl mx-auto mt-3">
+        Ми поєднуємо традиції фармацевтики з сучасними технологіями для вашого здоров'я
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div
+        *ngFor="let feature of features; let i = index"
+        class="card p-8 text-center hover:shadow-soft-lg transition-all duration-300"
+        [style.animation-delay]="i * 200 + 'ms'">
+
+        <div class="w-14 h-14 bg-primary-50 rounded flex items-center justify-center mx-auto mb-5">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #33E1AA;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" [attr.d]="feature.icon"></path>
+          </svg>
         </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div 
-            *ngFor="let feature of features; let i = index" 
-            class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center"
-            [style.animation-delay]="i * 200 + 'ms'">
-            
-            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <span class="text-3xl">{{feature.icon}}</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-4">{{feature.title}}</h3>
-            <p class="text-gray-600 leading-relaxed">{{feature.description}}</p>
-          </div>
-        </div>
+        <h3 class="text-base font-semibold text-neutral-900 mb-2">{{feature.title}}</h3>
+        <p class="text-sm text-neutral-500 leading-relaxed">{{feature.description}}</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>

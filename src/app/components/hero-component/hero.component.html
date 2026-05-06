@@ -1,109 +1,90 @@
-<section id="home" class="bg-gradient-to-br from-neutral-50 via-white to-primary-50/30 overflow-hidden" style="padding-top:104px">
-  <div class="container-custom py-20 lg:py-32">
+<section id="home" class="bg-white overflow-hidden" style="padding-top: 68px;">
+  <div class="container-custom py-10 lg:py-14">
     <!-- Hero Content -->
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="max-w-3xl mx-auto text-center">
       <!-- Main Headline -->
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-neutral-900 leading-tight mb-6">
-        Ваше здоров'я — наш 
-        <span class="text-primary">пріоритет</span>
+      <h1 class="font-display font-bold text-neutral-900 leading-tight mb-5" style="font-size: 3rem; line-height: 1.15;">
+        Ваше здоров'я — наш
+        <span style="color: #33E1AA; display: block;">пріоритет</span>
       </h1>
-      
+
       <!-- Subtext -->
-      <p class="text-lg md:text-xl text-neutral-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+      <p class="text-base text-neutral-500 mb-8 max-w-xl mx-auto">
         Власне виробництво • Індивідуальне виготовлення • Натуральні препарати
       </p>
-      
+
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-        <button 
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-14">
+        <button
           (click)="navigateToPage('manufacturing')"
-          class="btn btn-primary text-base px-8 py-4 w-full sm:w-auto">
+          class="btn btn-primary w-full sm:w-auto px-8">
           Індивідуальне виготовлення
         </button>
-        <button 
+        <button
           (click)="navigateToPage('about')"
-          class="btn btn-outline-primary text-base px-8 py-4 w-full sm:w-auto">
+          class="btn btn-outline-primary w-full sm:w-auto px-8">
           Про нас
         </button>
       </div>
-      
+
       <!-- Trust Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-600 mb-16">
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-          </svg>
-          <span class="font-medium">Власне виробництво</span>
+      <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-neutral-500 mb-14">
+        <div class="flex items-center gap-2 flex-col">
+          <img class="w-11 h-11" src="../../../assets/dashboard/manufacturing.png" alt="">
+          <span>Власне виробництво</span>
         </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-          </svg>
-          <span class="font-medium">Контроль якості</span>
+        <div class="flex items-center gap-2 flex-col">
+          <img class="w-11 h-11" src="../../../assets/dashboard/quality.jpg" alt="">
+          <span>Контроль якості</span>
         </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-          </svg>
-          <span class="font-medium">Кваліфіковані фармацевти</span>
+        <div class="flex items-center gap-2 flex-col">
+          <img class="w-11 h-11" src="../../../assets/dashboard/specialist.jpg" alt="">
+          <span>Кваліфіковані фармацевти</span>
         </div>
       </div>
     </div>
 
     <!-- Quick Action Tiles -->
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-5xl mx-auto">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- Individual Manufacturing -->
-        <button 
+        <button
           (click)="navigateToPage('manufacturing')"
-          class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
-          <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-            </svg>
+          class="card p-5 text-center hover:border-primary transition-all cursor-pointer group">
+          <div class="w-11 h-11 bg-primary-50 rounded flex items-center justify-center mx-auto mb-3 group-hover:bg-primary-100 transition-colors">
+            <img src="../../../assets/dashboard/production.jpg" alt="">
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Індивідуальне виготовлення</h3>
-          <p class="text-xs text-neutral-500">За рецептом</p>
+          <h3 class="font-semibold text-neutral-800 text-sm mb-0.5">Індивідуальне виготовлення</h3>
+          <p class="text-xs text-neutral-400">За рецептом</p>
         </button>
 
-        <!-- Catalog -->
-        <button 
+        <button
           (click)="navigateToPage('manufacturing')"
-          class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
-          <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-            </svg>
+          class="card p-5 text-center hover:border-primary transition-all cursor-pointer group">
+          <div class="w-11 h-11 bg-primary-50 rounded flex items-center justify-center mx-auto mb-3 group-hover:bg-primary-100 transition-colors">
+            <img src="../../../assets/dashboard/catalog.jpg" alt="">
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Каталог</h3>
-          <p class="text-xs text-neutral-500">Весь асортимент</p>
+          <h3 class="font-semibold text-neutral-800 text-sm mb-0.5">Каталог</h3>
+          <p class="text-xs text-neutral-400">Весь асортимент</p>
         </button>
 
-        <!-- Locations -->
-        <button 
+        <button
           (click)="navigateToPage('contacts')"
-          class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
-          <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            </svg>
+          class="card p-5 text-center hover:border-primary transition-all cursor-pointer group">
+          <div class="w-11 h-11 bg-primary-50 rounded flex items-center justify-center mx-auto mb-3 group-hover:bg-primary-100 transition-colors">
+            <img src="../../../assets/dashboard/branches.jpg" alt="">
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Наші відділення</h3>
-          <p class="text-xs text-neutral-500">3 аптеки</p>
+          <h3 class="font-semibold text-neutral-800 text-sm mb-0.5">Наші відділення</h3>
+          <p class="text-xs text-neutral-400">3 аптеки</p>
         </button>
 
-        <!-- About -->
-        <button 
+        <button
           (click)="navigateToPage('about')"
-          class="card p-6 text-center hover:scale-[1.02] transition-transform cursor-pointer">
-          <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+          class="card p-5 text-center hover:border-primary transition-all cursor-pointer group">
+          <div class="w-11 h-11 bg-primary-50 rounded flex items-center justify-center mx-auto mb-3 group-hover:bg-primary-100 transition-colors">
+            <img src="../../../assets/dashboard/about.jpg" alt="">
           </div>
-          <h3 class="font-semibold text-neutral-900 text-sm mb-1">Про нас</h3>
-          <p class="text-xs text-neutral-500">Наша історія</p>
+          <h3 class="font-semibold text-neutral-800 text-sm mb-0.5">Про нас</h3>
+          <p class="text-xs text-neutral-400">Наша історія</p>
         </button>
       </div>
     </div>

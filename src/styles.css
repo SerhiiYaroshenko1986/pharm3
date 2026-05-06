@@ -10,13 +10,18 @@
   * {
     @apply antialiased;
   }
-  
+
   body {
     @apply font-sans text-neutral-800 bg-white;
+    font-size: 14px;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-semibold text-neutral-900;
+  }
+
+  a {
+    @apply transition-colors duration-200;
   }
 }
 
@@ -24,28 +29,36 @@
 @layer components {
   /* Buttons */
   .btn {
-    @apply px-6 py-3 rounded-button font-medium transition-all duration-200 inline-flex items-center justify-center gap-2;
+    @apply px-6 py-2.5 rounded-button font-medium transition-all duration-200 inline-flex items-center justify-center gap-2 text-sm;
+    height: 44px;
+    line-height: 44px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
-  
+
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-600 active:bg-primary-700 shadow-soft hover:shadow-soft-md;
+    @apply bg-primary text-neutral-900 hover:bg-primary-600 active:bg-primary-700;
+    font-weight: 500;
   }
-  
+
   .btn-secondary {
-    @apply border-2 border-neutral-300 text-neutral-700 hover:bg-neutral-50 hover:border-neutral-400 active:bg-neutral-100;
+    @apply border border-neutral-300 text-neutral-700 bg-white hover:bg-neutral-50 hover:border-neutral-400 active:bg-neutral-100;
   }
-  
+
   .btn-outline-primary {
-    @apply border-2 border-primary text-primary hover:bg-primary-50 active:bg-primary-100;
+    @apply border border-primary text-primary hover:bg-primary-50 active:bg-primary-100;
   }
-  
+
   .btn-text {
     @apply text-neutral-700 hover:text-primary hover:bg-neutral-50 px-4;
+    height: auto;
+    line-height: inherit;
   }
 
   /* Cards */
   .card {
     @apply bg-white rounded-card shadow-soft hover:shadow-soft-md transition-shadow duration-200;
+    border: 1px solid #F9F9FC;
   }
 
   .card-product {
@@ -54,7 +67,9 @@
 
   /* Inputs */
   .input {
-    @apply w-full px-4 py-3 border border-neutral-300 rounded-button text-neutral-800 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary transition-colors;
+    @apply w-full px-4 py-2.5 border border-neutral-200 rounded-button text-neutral-800 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary transition-colors bg-neutral-50;
+    font-size: 14px;
+    height: 44px;
   }
 
   /* Container */
@@ -62,13 +77,35 @@
     @apply max-w-container mx-auto px-4 sm:px-6 lg:px-8;
   }
 
+  /* Section title with cura-style accent underline */
+  .section-title {
+    @apply font-display font-bold text-neutral-900;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #33E1AA;
+    border-radius: 2px;
+  }
+  .section-title-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   /* Badge */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium;
   }
 
   .badge-primary {
-    @apply bg-primary-100 text-primary-700;
+    @apply bg-primary-100 text-primary-800;
   }
 
   .badge-success {
